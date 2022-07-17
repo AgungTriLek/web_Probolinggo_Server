@@ -1,0 +1,40 @@
+<table id="example2" class="table  table-bordered table-hover">
+    
+  
+    
+    <thead class="">
+    <tr>
+      <th >No.</th>
+      <th >nama</th>
+      <th >aksi</th>
+    </tr>
+    </thead>
+    <tbody >
+      <% for(let i = 0; i < category.length; i++){ %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td>
+            <div>
+              <%= category[i].name %>
+            </div>
+          </td>
+
+          <td  >
+            
+            <a href="/category-akuntabilitas/edit/<%= category[i]._id %>" class="btn btn-warning">
+              <i class="fas fa-pencil-alt"></i>
+              ubah
+            </a>
+            <form style="display: inline-block ;" action="/category-akuntabilitas/delete/<%= category[i]._id %>?_method=delete" method="POST">
+              <button class="btn btn-danger">
+                <i class="fas fa-trash"></i>
+                hapus
+              </button>
+            </form>
+          </td>
+        </tr>
+      <%} %>
+    </tbody>
+ 
+  
+  </table>

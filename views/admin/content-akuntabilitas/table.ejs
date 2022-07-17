@@ -1,0 +1,75 @@
+<table id="example2" class="table  table-bordered table-hover" style="width: 200% ;">
+    <div class="agung">
+  
+    
+      <thead class="">
+      <tr>
+        <th >No.</th>
+        <th >Title</th>
+        <th >Category</th>
+        <th >File</th>
+        <th >status</th>
+        <th >aksi</th>
+      </tr>
+      </thead>
+      <tbody >
+        <% for(let i = 0; i < content.length; i++){ %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td>
+              <div class="scroller">
+                <%= content[i].title %>
+              </div>
+            </td>
+            <td>
+              <div class="scroller">
+                <%= content[i]?.category?.name ?? '-' %>
+                
+              </div>
+            </td>
+            
+            <td>
+                <iframe height="250px" width="auto" src="http://localhost:3000/uploads/<%= content[i].file %>" alt="gambar"></iframe>
+
+            </td>
+            
+            <td>
+              <div class="scroller">
+                <% if(content[i].status === 'N') {%>
+                  <span class="badge badge-danger">
+                    Belum uploads
+                  </span>
+                  <% } else {%>
+                    <span class="badge badge-success">
+                      Teruploads
+                    </span>
+                    <% }%>
+              </div>
+            <td style="width: 300px;" >
+              <form action="/content-akuntabilitas/status/<%= content[i]._id %>?_method=PUT" method="POST" style="display: inline-block ;">
+                <button class="btn btn-primary">
+                  <i class="fas fa-folder"></i>
+                  <% if(content[i].status === 'N') {%>
+                    uploads
+                    <% } else {%>
+                      tarik
+                      <% }%>
+                </button>
+              </form>
+              <a href="/content-akuntabilitas/edit/<%= content[i]._id %>" class="btn btn-warning">
+                <i class="fas fa-pencil-alt"></i>
+                ubah
+              </a>
+              <form style="display: inline-block ;" action="/content-akuntabilitas/delete/<%= content[i]._id %>?_method=delete" method="POST">
+                <button class="btn btn-danger">
+                  <i class="fas fa-trash"></i>
+                  hapus
+                </button>
+              </form>
+            </td>
+          </tr>
+        <%} %>
+      </tbody>
+    </div>
+    
+    </table>
