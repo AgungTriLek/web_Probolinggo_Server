@@ -1,6 +1,7 @@
 const dotenv = require('dotenv')
 const path = require('path')
 
+dotenv.config({ path: '.env.local' });
 dotenv.config()
 
 module.exports = {
